@@ -1,0 +1,27 @@
+image:
+  repository: postgres
+  tag: "16.3"
+  pullPolicy: IfNotPresent
+
+postgresql:
+  username: postgres
+  password: my-secret-password
+  database: mydb
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 512Mi
+  limits:
+    cpu: 500m
+    memory: 1Gi
+
+persistence:
+  enabled: true
+  storageClassName: "standard"
+  accessMode: ReadWriteOnce
+  size: 8Gi
+
+service:
+  type: ClusterIP
+  port: 5432
